@@ -1,0 +1,612 @@
+openapi: 3.0.0
+x-stoplight:
+  id: 9z5s6z073bo9y
+info:
+  title: milempresas
+  version: '1.0'
+  description: ''
+servers:
+  - url: 'http://localhost:8080'
+paths:
+  /companies/addcompany:
+    post:
+      summary: AddCompany
+      operationId: post-company
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Company'
+              examples: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Company'
+            examples: {}
+        description: ''
+      description: |
+        Endpoint register company
+    parameters: []
+  /favourites/addfavourite:
+    post:
+      summary: AddFavourite
+      operationId: post-favourite
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Favourite'
+              examples: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Favourite'
+            examples: {}
+        description: ''
+      description: |
+        Endpoint register favourite
+    parameters: []
+  /categories/addCategory:
+    post:
+      summary: AddUser
+      operationId: post-category
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+              examples: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+            examples: {}
+        description: ''
+      description: |
+        Endpoint register category
+    parameters: []
+  '/companies/getCompany/{companyId}':
+    parameters:
+      - schema:
+          type: string
+        name: companyId
+        in: path
+        required: true
+    get:
+      summary: getCompanyID
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Company'
+              examples: {}
+      operationId: get-companyId
+      description: |
+        Endpoint get company
+  '/users/getUser/{userId}':
+    parameters:
+      - schema:
+          type: string
+        name: userId
+        in: path
+        required: true
+    get:
+      summary: getUserByID
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples: {}
+      operationId: get-userId
+      description: |
+        Endpoint get user
+  '/categories/getCategory/{categoryId}':
+    parameters:
+      - schema:
+          type: string
+        name: categoryId
+        in: path
+        required: true
+    get:
+      summary: getCategoryByID
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+              examples: {}
+      operationId: get-categoryId
+      description: |
+        Endpoint get category
+  '/cities/getCitiesByProvinceId/{provinceId}':
+    parameters:
+      - schema:
+          type: string
+        name: provinceId
+        in: path
+        required: true
+    get:
+      summary: getCitiesByProvinceId
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/City'
+              examples: {}
+      operationId: get-CitiesByProvinceId
+      description: |
+        Endpoint get Cities By ProvinceId
+  /companies/getAllCompaniesAllHome:
+    get:
+      summary: getAllCompaniesAllHome
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Company'
+              examples: {}
+        '400':
+          description: Bad Request
+      operationId: get-allCompaniesHome
+      description: |
+        Endpoint get all companies Home
+    parameters: []
+  '/companies/getAllCompaniesByProvinceId/{provinceId}':
+    get:
+      summary: getAllCompaniesByProvinceId
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Company'
+              examples: {}
+        '400':
+          description: Bad Request
+      operationId: get-companiesByProvinceId
+      description: |
+        Endpoint get all companies by province
+    parameters:
+      - schema:
+          type: string
+        name: provinceId
+        in: path
+        required: true
+  '/companies/getAllCompaniesByCityId/{cityId}':
+    get:
+      summary: getAllCompaniesByCityId
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Company'
+              examples: {}
+        '400':
+          description: Bad Request
+      operationId: get-AllCompaniesByCityId
+      description: |
+        Endpoint getAllCompaniesByCityId
+    parameters:
+      - schema:
+          type: string
+        name: cityId
+        in: path
+        required: true
+  /provinces/getAllProvinces:
+    get:
+      summary: getAllProvinces
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Province'
+              examples: {}
+        '400':
+          description: Bad Request
+      operationId: get-AllProvinces
+      description: |
+        Endpoint get all provinces
+    parameters: []
+  /categories/getAllCategories:
+    get:
+      summary: getAllCategories
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+              examples: {}
+        '400':
+          description: Bad Request
+      operationId: get-allCategories
+      description: |
+        Endpoint get all categories
+    parameters: []
+  /categories/getPopularlCategories:
+    get:
+      summary: getAllPopularCategories
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+              examples: {}
+        '400':
+          description: Bad Request
+      operationId: get-PopularCategories
+      description: |
+        Endpoint get popular categories
+    parameters: []
+  /companies/companyUpdate:
+    patch:
+      summary: companyUpdate
+      operationId: patch-company
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Company'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Company'
+      description: |
+        Endpoint update company
+    parameters: []
+  /favourites/favouriteUpdate:
+    patch:
+      summary: favouriteUpdate
+      operationId: patch-favourite
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Favourite'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Favourite'
+      description: |
+        Endpoint update favourite
+    parameters: []
+  /users/userUpdate:
+    patch:
+      summary: userUpdate
+      operationId: patch-user
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      description: Endpoint update user
+    parameters: []
+  /categories/categoryUpdate:
+    patch:
+      summary: categoryUpdate
+      operationId: patch-category
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+        description: ''
+      description: Endpoint update category
+    parameters: []
+  '/companies/removeCompany/{companyId}':
+    parameters:
+      - schema:
+          type: string
+        name: companyId
+        in: path
+        required: true
+    get:
+      summary: removeCompany
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+      operationId: removeCompany
+      description: |
+        Endpoint remove company
+  '/favourites/removeFavourite/{favouriteId}':
+    parameters:
+      - schema:
+          type: string
+        name: favouriteId
+        in: path
+        required: true
+    get:
+      summary: removeFavourite
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+      operationId: removeFavourite
+      description: |
+        Endpoint remove favourite
+  '/users/removeUser/{userId}':
+    parameters:
+      - schema:
+          type: string
+        name: userId
+        in: path
+        required: true
+    get:
+      summary: removeUser
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+      operationId: removeUser
+      description: Endpoint remove user
+  '/categories/removeCategory/{categoryId}':
+    parameters:
+      - schema:
+          type: string
+        name: categoryId
+        in: path
+        required: true
+    get:
+      summary: removeCategory
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+      operationId: removeCategory
+      description: Endpoint remove category
+components:
+  schemas:
+    Company:
+      title: Company
+      type: object
+      description: ''
+      x-examples: {}
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the given user.
+          format: int64
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        address:
+          type: string
+        phone:
+          type: string
+        description:
+          type: string
+        province:
+          $ref: '#/components/schemas/Province'
+        city:
+          $ref: '#/components/schemas/City'
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+        image:
+          $ref: '#/components/schemas/Image'
+      required:
+        - name
+        - email
+        - address
+        - phone
+        - province
+        - city
+    User:
+      title: User
+      type: object
+      description: ''
+      x-examples: {}
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the given user.
+          format: int64
+        username:
+          type: string
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          format: password
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+        companies:
+          type: array
+          items:
+            $ref: '#/components/schemas/Company'
+        favourites:
+          type: array
+          items:
+            $ref: '#/components/schemas/Company'
+      required:
+        - username
+        - email
+        - password
+    Favourite:
+      title: Favourite
+      x-stoplight:
+        id: 2fus8c0k5um2w
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        id_user:
+          type: integer
+        id_company:
+          type: integer
+      required:
+        - id_user
+        - id_company
+    Province:
+      title: Province
+      x-stoplight:
+        id: fsvx4uaxlipl8
+      type: object
+      properties:
+        province_id:
+          type: integer
+        province_name:
+          type: string
+      required:
+        - province_name
+    City:
+      title: City
+      x-stoplight:
+        id: q67qb1krzttxp
+      type: object
+      properties:
+        city_id:
+          type: integer
+        province_id:
+          type: integer
+        city_name:
+          type: string
+      required:
+        - province_id
+        - city_name
+    Category:
+      title: Category
+      x-stoplight:
+        id: eibthhg3w1uov
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      required:
+        - name
+    Role:
+      title: Role
+      x-stoplight:
+        id: ep1rcfu4tbd50
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          $ref: '#/components/schemas/ERole'
+    ERole:
+      type: object
+      title: ERole
+      x-stoplight:
+        id: woix1omwgr6qa
+      enum:
+        - ROLE_USER
+        - ROLE_MODERATOR
+        - ROLE_ADMIN
+    Image:
+      title: Image
+      x-stoplight:
+        id: pa5a994chmo24
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        type:
+          type: string
+        picByte:
+          type: string
+          format: byte
+        imageBase64:
+          type: string
+  responses: {}
